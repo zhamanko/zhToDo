@@ -55,27 +55,15 @@ watch(todos, (newTodos) => {
 </script>
 
 <template>
-  <h1>zhToDo</h1>
-  <div class="add-container">
-    <AddTodo @add="addTodo" />
+  <div>
+    <h1 class="text-center text-2xl py-3">zhToDo</h1>
+    <div class="fixed bottom-2 left-2 z-10 right-2 justify-center items-center gap-5 p-3 flex flex-col rounded-2xl
+    backdrop-blur-sm bg-white/20 shadow-lg border border-white/30">
+      <AddTodo @add="addTodo" />
+      <FilterBar @filter-changed="toggleFilter" />
+    </div>
   </div>
-  <div class="list-container">
+  <div class="">
     <TodoList :todos="todoListFilter" @delete="deleteTodo" @update:done="updateTodo" />
   </div>
-  <div>
-    <FilterBar @filter-changed="toggleFilter"/>
-  </div>
 </template>
-
-<style scoped>
-h1 {
-  text-align: center;
-  color: #272727;
-}
-
-.add-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-</style>

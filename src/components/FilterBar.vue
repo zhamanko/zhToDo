@@ -2,18 +2,18 @@
 import { ref } from 'vue';
 
 const emit = defineEmits(['filter-changed']);
-let filter = 'all';
+let filter = ref('all');
 
 function setFilter(value) {
-    filter = value;
-    emit('filter-changed', filter);
+    filter.value = value;
+    emit('filter-changed', value);
 }
 </script>
 
 <template>
-    <div>
-        <button @click="setFilter('all')">Всі</button>
-        <button @click="setFilter('active')">Активні</button>
-        <button @click="setFilter('finished')">Завершені</button>
+    <div class="flex justify-around w-80">
+        <button @click="setFilter('all')" :class="filter === 'all' ? 'text-blue-300' : '' ">All</button>
+        <button @click="setFilter('active')" :class="filter === 'active' ? 'text-blue-300' : '' ">Active</button>
+        <button @click="setFilter('finished')" :class="filter === 'finished' ? 'text-blue-300' : '' ">Finished</button>
     </div>
 </template>
